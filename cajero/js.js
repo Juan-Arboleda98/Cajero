@@ -110,38 +110,41 @@ function consultasMovimientos(){
 
 do{
 
-     option = prompt(
+     option = parseInt(prompt(
         "====== Menú =======\n"+
         '1. Retirar\n'+
         '2. Consignar\n'+
         '3. Consultar Saldo\n'+
         '4. Consultar Movimientos\n'+
-        '5. salir\n'+
-        '6. cambio de contraseña'
+        '5. cambio de contraseña\n'+
+        '6. salir\n'
         
-    )
+    ))
 
     switch(option){
-        case '1':
+        case 1:
             retirar()
             break;
-        case '2':
+        case 2:
             consignar()
             break;
-        case '3':
+        case 3:
             consultarSaldo()
             break;
-        case '4':
+        case 4:
             consultarMovimientos()
             break;
-        case '5':
+        case 5:
+            cambioContraseña()
+            break;
+        case 6:  
             alert('Gracias por consultar')
             console.log('Gracias por consultar')
             break ;
         default: 
     }
     
-}while(option !== '5')
+}while(option !== 6)
 }
 
 // funcion consignar gracias a esta funcion el usuario puedo consignar dinero pero solo cuando ya este registrado hay una logica que el valor inicia desde 0 y gracias a un acomulador va subiendo el saldo gracias a la misma logica aparece mensajes de consignacion exitosa y si no consigana nada aparece un alerta que debe ser mayor de 0 y en esta funcion hay otra funcion que guarda los mivimientos entrada
@@ -212,15 +215,16 @@ function consultarMovimientos(){
 }
 //funcion cambio de contraseña gracias a esta funcion podemos darle al usuario la opcion de cambio de contraseña validando el usuario y la contraseña ya existente miramos en la lista con registro.find. y accedemos a la arraylist  registro que esta global y gracias a usuario.clave se puede cambiar los registros 
 function cambioContraseña(){
-    let user = prompt('Ingrese si usuario')
+    let user = prompt('Ingrese s usuario')
     let contraseñaActual = prompt('Ingrese contraseña actual')
 
-    let usuario = registro.find(u => u.usuario === user && u.pass === contraseñaActual)
+    let usuario = registros.find(u => u.usuario === user && u.clave === contraseñaActual)
 
     if (usuario){
         let nuevaContraseña = prompt('Ingrese su nueva contraseña')
+        let confirmNuevaContraseña = prompt('confirme su nueva contraseña')
 
-        if(nuevaContraseña && nuevaContraseña!== ""){ 
+        if(nuevaContraseña && nuevaContraseña === confirmNuevaContraseña){ 
         usuario.clave = nuevaContraseña
         alert('Contraseña cambiada con exito')
         }else{
