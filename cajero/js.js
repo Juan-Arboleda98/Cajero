@@ -224,7 +224,7 @@ function cambioContraseña(){
         let nuevaContraseña = prompt('Ingrese su nueva contraseña')
         let confirmNuevaContraseña = prompt('confirme su nueva contraseña')
 
-        if(nuevaContraseña && nuevaContraseña === confirmNuevaContraseña){ 
+        if(nuevaContraseña === confirmNuevaContraseña){ 
         usuario.clave = nuevaContraseña
         alert('Contraseña cambiada con exito')
         }else{
